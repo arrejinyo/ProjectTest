@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SwagLabsHomePage {
 
+
     WebDriver driver;
 
     @FindBy(id="react-burger-menu-btn")
