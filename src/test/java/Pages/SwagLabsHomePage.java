@@ -13,7 +13,6 @@ public class SwagLabsHomePage {
     WebElement btnBurguerMenu;
 
     public SwagLabsHomePage(WebDriver driver){
-
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
@@ -21,9 +20,6 @@ public class SwagLabsHomePage {
 
 
 
-    public boolean isLogged(){
-        return    btnBurguerMenu.isDisplayed();
-
-    }
+    public boolean isLogged(){ return    btnBurguerMenu.isDisplayed();}
 
 }

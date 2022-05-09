@@ -33,23 +33,11 @@ public class SwagLabsLoginPage {
         userName.sendKeys(strUserName);
     }
 
+    public void setPassword(String strPassword){password.sendKeys(strPassword);}
 
-    public void setPassword(String strPassword){
-        password.sendKeys(strPassword);
+    public void clickBtnLogin(){btnLogin.click();}
 
-    }
-
-
-    public void clickBtnLogin(){
-        btnLogin.click();
-
-    }
-
-
-    public boolean isConnected(){
-        return    btnLogin.isDisplayed();
-
-    }
+    public boolean isConnected(){return    btnLogin.isDisplayed();}
 
 
     public void login(String userName,String pasword){

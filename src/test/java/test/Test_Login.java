@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import Pages.SwagLabsHomePage;
@@ -41,5 +42,9 @@ public class Test_Login {
 
     }
 
+    @AfterTest
+    public void close(){
+        driver.close();
+    }
 
 }
