@@ -12,26 +12,18 @@ import Pages.SwagLabsLoginPage;
 
 
 
-public class Test_Login{
+public class Test_Login extends BaseTest {
 
-    String driverPath = "C:/Users/sebastian.arrejin.so/ProjectTest/src/utils/chromedriver/chromedriver.exe";
-    WebDriver driver;
     SwagLabsLoginPage objLogin;
     SwagLabsHomePage objHomePage;
 
 
-    @BeforeTest
-    public void setup() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("about:blank");
-    }
+
 
 
     @Test()
     public void Ingreso(){
-        objLogin = new SwagLabsLoginPage(driver);
+        objLogin = new SwagLabsLoginPage(this.driver);
         driver.get("https://www.saucedemo.com/");
         Assert.assertTrue(objLogin.isConnected(), "No se pudo ingresar en el sitio");
 

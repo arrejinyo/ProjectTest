@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class SwagLabsHomePage {
+public class SwagLabsHomePage extends Base{
 
 
     WebDriver driver;
@@ -13,11 +13,15 @@ public class SwagLabsHomePage {
     @FindBy(id="react-burger-menu-btn")
     WebElement btnBurguerMenu;
 
-    public SwagLabsHomePage(WebDriver driver){
+    public SwagLabsHomePage(WebDriver driver) {
+        super(driver);
+    }
+
+    /*public SwagLabsHomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
-    }
+    }*/
 
 
 

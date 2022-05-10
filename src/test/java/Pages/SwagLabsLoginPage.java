@@ -5,9 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SwagLabsLoginPage {
 
-    WebDriver driver;
+public class SwagLabsLoginPage extends Base{
 
     @FindBy(id="user-name")
     WebElement userName;
@@ -15,18 +14,17 @@ public class SwagLabsLoginPage {
     @FindBy(id="password")
     WebElement password;
 
-    @FindBy(xpath="//title")
+    @FindBy(xpath = "//head[@title='Swag Labs']")
     WebElement titleText;
 
     @FindBy(id="login-button")
     WebElement btnLogin;
 
 
-    public SwagLabsLoginPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-
+    public SwagLabsLoginPage(WebDriver driver) {
+        super(driver);
     }
+
 
 
     public void setUserName(String strUserName){
@@ -35,10 +33,16 @@ public class SwagLabsLoginPage {
 
     public void setPassword(String strPassword){password.sendKeys(strPassword);}
 
-    public void clickBtnLogin(){btnLogin.click();}
+    public void clickBtnLogin(){
+        btnLogin.click();
+    }
 
-    public boolean isConnected(){return    btnLogin.isDisplayed();}
+    public boolean isConnected() {
+        System.out.println("sadfasdf" + getDriver().getTitle());
+        return getDriver().getTitle().equalsIgnoreCase("Swag Labs");
 
+
+    }
 
     public void login(String userName,String pasword){
         this.setUserName(userName);
