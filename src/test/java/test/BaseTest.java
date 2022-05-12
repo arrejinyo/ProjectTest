@@ -1,8 +1,9 @@
 package test;
 
 
-//import com.paulhammant.ngwebdriver.NgWebDriver;
 import java.util.concurrent.TimeUnit;
+
+import com.paulhammant.ngwebdriver.NgWebDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -12,7 +13,7 @@ public class BaseTest {
 
     String driverPath = "C:/Users/sebastian.arrejin.so/ProjectTest/src/utils/chromedriver/chromedriver.exe";
     protected WebDriver driver;
-    //  protected NgWebDriver ngDriver;
+    protected NgWebDriver ngDriver;
 
     public BaseTest() {
     }

@@ -1,5 +1,6 @@
 package Pages;
 
+import com.paulhammant.ngwebdriver.NgWebDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
@@ -20,7 +21,7 @@ public class Base {
 
     private WebDriver driver;
     private WebDriverWait wait;
-  //  private NgWebDriver ngDriver;
+    private NgWebDriver ngDriver;
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;
@@ -31,19 +32,19 @@ public class Base {
         PageFactory.initElements(driver, this);
     }
 
-    /*public Base(WebDriver driver, NgWebDriver ngDriver) {
+    public Base(WebDriver driver, NgWebDriver ngDriver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         this.ngDriver = ngDriver;
     }
-*/
+
     public WebDriver getDriver() {
         return this.driver;
     }
 
-   /* public NgWebDriver getNgDriver() {
+   public NgWebDriver getNgDriver() {
         return this.ngDriver;
-    }*/
+    }
 
     public void wait(int time) {
         this.getDriver().manage().timeouts().implicitlyWait((long)time, TimeUnit.SECONDS);
