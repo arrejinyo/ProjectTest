@@ -1,58 +1,54 @@
 package Services;
 
-import io.restassured.RestAssured;
+
 import org.testng.annotations.Test;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import java.util.*;
+import Services.BackEndClass.*;
+
 
 public class Demo {
 
 
 
     @Test
-    public void test(){
-    doSearch();
+    public void doSearch_test() {
+        BackEndClass back = new BackEndClass();
+        back.doSearch("Ps4");
+        back.searchFirstProductById();
 
     }
 
-
-
-    public String doSearch() {
-        String busqueda = "PS5";
-        RestAssured.baseURI = "https://api.mercadolibre.com/sites/MLA";
-        String body = RestAssured.given().when().get("/search?q=" + busqueda).then().extract().body().asString();
-
-
-        String totalPartialResults = body.substring(body.indexOf("total"), body.indexOf(",\"primary_results"));
-        int totalResults = Integer.parseInt(totalPartialResults.substring(7, totalPartialResults.length()));
-        String totalResultsMsg = "El total de resultados para la busqueda es: " + totalResults;
-
-        String limitPartialResults = body.substring(body.indexOf("limit"), body.indexOf("},\"results\":["));
-        int limit = Integer.parseInt(limitPartialResults.substring(7, limitPartialResults.length()));
-        String limitMsg = "El limite de paginado es: " + limit;
-/*
-        System.out.println(totalResultsMsg);
-        System.out.println(limitMsg);
-
-        if(totalResults>limit) {
-            System.out.println("La cantidad de productos encontrados ("+totalResults+") supera el limite de paginado ("+limit+")");
-        }else{
-            System.out.println("La cantidad de productos encontrados ("+totalResults+") no supera el limite de paginado ("+limit+")");
-        }*/
-        //System.out.println(body);
-
-
-
-
-        String getProductByIdAux = body.substring(body.indexOf("{\"id\":\""+"MLA1117228493"), body.length());
-        String getProductById = getProductByIdAux.substring(0, body.indexOf("order_backend"));
-        System.out.println(getProductById);
-
-
-
-        return body;
+    @Test(dependsOnMethods = "doSearch_test", priority = 3)
+        public void validar_titulo(){
+        BackEndClass back = new BackEndClass();
+        back.validateTitle();
     }
 
+    @Test(dependsOnMethods = "doSearch_test")
+    public void validar_precio(){
+        BackEndClass back = new BackEndClass();
+        back.validatePrice();
+    }
 
+    @Test(dependsOnMethods = "doSearch_test")
+    public void validar_AceptaMp(){
+        BackEndClass back = new BackEndClass();
+        back.validateAcceptMp();
+    }
+
+    @Test(dependsOnMethods = "doSearch_test")
+    public void validar_melicoin(){
+        BackEndClass back = new BackEndClass();
+        back.validateMelicoin();
+    }
+
+    @Test(dependsOnMethods = "doSearch_test")
+    public void validar_envio_gratis(){
+        BackEndClass back = new BackEndClass();
+        back.validateFreeShipping();
+    }
 
 }
+
+
