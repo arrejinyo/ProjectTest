@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class Meli_Test extends BaseTest {
+public class Meli_FrontEnd_Test extends BaseTest {
 
 
     MeliPage objMeliPage;
@@ -20,8 +20,6 @@ public class Meli_Test extends BaseTest {
         objMeliPage.acceptCokkies();
         Assert.assertTrue(objMeliPage.isConnected(), "No se pudo ingresar en el sitio");
     }
-
-
 
     @Test(dependsOnMethods = "Ingreso", priority = 1)
     public void seleccionarAires(){
@@ -45,7 +43,7 @@ public class Meli_Test extends BaseTest {
         Assert.assertTrue(objMeliPage.validateSecondTitle("Belleza"), "No fue posible ingresar a la categoria 'Aires'");
     }
 
-    //La categoria Perfumes importados no existe
+    //La categoria herramientas y Textiles no existe, por ende solo busque por herramientas
     @Test(dependsOnMethods = "Ingreso", priority = 4)
     public void seleccionarHerramientas(){
         objMeliPage = new MeliPage(this.driver);
@@ -70,7 +68,5 @@ public class Meli_Test extends BaseTest {
 
         Assert.assertTrue(objMeliPage.validateAtributes(), "Los campos de la grilla y detalle no son iguales!");
     }
-
-
 
 }

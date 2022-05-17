@@ -47,7 +47,7 @@ public class BackEndClass {
 
 
     public void searchFirstProductById() {
-        System.out.println(" El ID del producto a buscar es " + this.id);
+        System.out.println("El ID del producto a buscar es " + this.id);
         baseURI = "https://api.mercadolibre.com/items/";
         this.responseProduct = given().when().get(this.id).then().extract().body().asString();
 
@@ -101,7 +101,7 @@ public class BackEndClass {
             Assert.assertTrue(melicoin.equalsIgnoreCase(this.melicoin));
         } catch (Exception e) {
             Assert.fail("No se encontró el parametro 'melicoin' en el detalle del producto ID: "+this.id);
-            //System.out.println("No se encontró 'moneda' la el parametro moneda en el detalle del producto ID");
+
         }
     }
 
