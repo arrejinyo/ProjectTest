@@ -37,6 +37,7 @@ public class Meli_Test extends BaseTest {
         Assert.assertTrue(objMeliPage.validateTitle("Celulares y Smartphones"), "No fue posible ingresar a la categoria 'Aires'");
     }
 
+    //La categoria Perfumes importados no existe
     @Test(dependsOnMethods = "Ingreso", priority = 3)
     public void seleccionarBelleza(){
         objMeliPage = new MeliPage(this.driver);
@@ -44,6 +45,7 @@ public class Meli_Test extends BaseTest {
         Assert.assertTrue(objMeliPage.validateSecondTitle("Belleza"), "No fue posible ingresar a la categoria 'Aires'");
     }
 
+    //La categoria Perfumes importados no existe
     @Test(dependsOnMethods = "Ingreso", priority = 4)
     public void seleccionarHerramientas(){
         objMeliPage = new MeliPage(this.driver);
@@ -57,6 +59,18 @@ public class Meli_Test extends BaseTest {
         objMeliPage.selectCategories("Bebés","CUARTO DEL BEBÉ");
         Assert.assertTrue(objMeliPage.validateTitle("Cuarto del Bebé"), "No fue posible ingresar a la categoria 'Aires'");
     }
+
+    @Test(dependsOnMethods = "Ingreso", priority = 6)
+    public void elegirCategoriaYvalidar(){
+        objMeliPage = new MeliPage(this.driver);
+        objMeliPage.selectCategories("Tecnología","Videojuegos");
+        objMeliPage.findByText("Capital Federal").click();
+        objMeliPage.setAtributesFirstItem();
+        objMeliPage.selectFirstItem();
+
+        Assert.assertTrue(objMeliPage.validateAtributes(), "Los campos de la grilla y detalle no son iguales!");
+    }
+
 
 
 }
