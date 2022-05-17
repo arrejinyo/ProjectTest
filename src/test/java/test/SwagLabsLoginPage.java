@@ -1,20 +1,14 @@
 package test;
 
-import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import Pages.SwagLabsHomePage;
-import Pages.SwagLabsLoginPage;
 
 
+public class SwagLabsLoginPage extends BaseTest {
 
-public class Test_Login extends BaseTest {
-
-    SwagLabsLoginPage objLogin;
+    Pages.SwagLabsLoginPage objLogin;
     SwagLabsHomePage objHomePage;
 
 
@@ -23,7 +17,7 @@ public class Test_Login extends BaseTest {
 
     @Test()
     public void Ingreso(){
-        objLogin = new SwagLabsLoginPage(this.driver);
+        objLogin = new Pages.SwagLabsLoginPage(this.driver);
         driver.get("https://www.saucedemo.com/");
         Assert.assertTrue(objLogin.isConnected(), "No se pudo ingresar en el sitio");
 
@@ -39,8 +33,4 @@ public class Test_Login extends BaseTest {
     }
 
 
-    @AfterTest
-    public void close(){
-        driver.close();
-    }
 }

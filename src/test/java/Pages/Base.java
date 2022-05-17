@@ -156,4 +156,31 @@ public class Base {
             return false;
         }
     }
+
+    protected void waitElement(WebElement element, int mseconds){
+        this.wait(0);
+        int contador=0;
+        boolean result= false;
+        do {
+            contador=contador+1000;
+            if(!elementExists(element)){
+                esperar(100);
+            }else{
+                result=true;
+            }
+        } while(result=false||mseconds>contador);
+        this.wait(15);
+
+    }
+
+
+
+    protected void esperar(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+        }
+    }
+
+
 }
